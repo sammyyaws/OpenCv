@@ -16,6 +16,23 @@ def CapVideoFromWebcam():
           break
     cap.release()
     cv.destroyAllWindows()
-if __name__=="__main__":
-     CapVideoFromWebcam()
 
+def VideoFromFile():
+    root=os.getcwd()
+    VideoPath=os.path.join(root,"videos","vidsample.mp4")
+    cap=cv.VideoCapture(VideoPath)
+
+    while cap.isOpened():
+        ret,frame=cap.read()
+        if ret:
+            cv.imshow("FileVid",frame)
+        if cv.waitKey(1)==ord('q'):
+            break
+    cap.release()
+    cv.destroyAllWindows()
+
+
+
+if __name__=="__main__":
+     #CapVideoFromWebcam()
+     VideoFromFile()
